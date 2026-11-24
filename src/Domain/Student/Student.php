@@ -10,21 +10,11 @@ use Ds\Map;
 
 class Student
 {
-    private Email $email;
-    private DateTimeInterface $bd;
     private Map $watchedVideos;
-    private string $fName;
-    private string $lName;
-    private Address $address;
 
-    public function __construct(Email $email, DateTimeInterface $bd, string $fName, string $lName, Address $address)
+    public function __construct(private Email $email, private DateTimeInterface $bd, private string $fName, private string $lName, private Address $address)
     {
         $this->watchedVideos = new Map();
-        $this->email = $email;
-        $this->bd = $bd;
-        $this->fName = $fName;
-        $this->lName = $lName;
-        $this->address = $address;
     }
 
     public function getFullName(): string
