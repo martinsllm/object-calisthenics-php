@@ -4,6 +4,7 @@ namespace App\Calisthenics\Tests\Unit\Domain\Student;
 
 use App\Calisthenics\Domain\Student\Student;
 use App\Calisthenics\Domain\Video\Video;
+use App\Calisthenics\Domain\Email\Email;
 use PHPUnit\Framework\TestCase;
 
 class StudentTest extends TestCase
@@ -13,7 +14,7 @@ class StudentTest extends TestCase
     protected function setUp(): void
     {
         $this->student = new Student(
-            'email@example.com',
+            new Email('email@example.com'),
             new \DateTimeImmutable('1997-10-15'),
             'Vinicius',
             'Dias',
