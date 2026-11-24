@@ -6,15 +6,14 @@ use App\Calisthenics\Domain\Video\Video;
 use App\Calisthenics\Domain\Email\Email;
 use App\Calisthenics\Domain\Address\Address;
 use DateTimeInterface;
-use Ds\Map;
 
 class Student
 {
-    private Map $watchedVideos;
+    private WatchedVideos $watchedVideos;
 
     public function __construct(private Email $email, private DateTimeInterface $bd, private string $fName, private string $lName, private Address $address)
     {
-        $this->watchedVideos = new Map();
+        $this->watchedVideos = new WatchedVideos();
     }
 
     public function getFullName(): string
@@ -34,7 +33,7 @@ class Student
 
     public function watch(Video $video, DateTimeInterface $date)
     {
-        $this->watchedVideos->put($video, $date);
+        $this->watchedVideos->add($video, $date);
     }
 
     public function hasAccess(): bool
@@ -48,9 +47,7 @@ class Student
 
     private function isFirstWatchedVideoInLessThan90Days(): bool
     {
-        $this->watchedVideos->sort(fn (DateTimeInterface $dateA, DateTimeInterface $dateB) => $dateA <=> $dateB);
-       
-        $firstDate = $this->watchedVideos->first()->value;
+        $firstDate = $this->watchedVideos->dateOfFirstVideo();
         $today = new \DateTimeImmutable();
 
         return $firstDate->diff($today)->days < 90;
