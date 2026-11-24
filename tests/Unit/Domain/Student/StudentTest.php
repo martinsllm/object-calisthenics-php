@@ -5,6 +5,7 @@ namespace App\Calisthenics\Tests\Unit\Domain\Student;
 use App\Calisthenics\Domain\Student\Student;
 use App\Calisthenics\Domain\Video\Video;
 use App\Calisthenics\Domain\Email\Email;
+use App\Calisthenics\Domain\Address\Address;
 use PHPUnit\Framework\TestCase;
 
 class StudentTest extends TestCase
@@ -18,12 +19,7 @@ class StudentTest extends TestCase
             new \DateTimeImmutable('1997-10-15'),
             'Vinicius',
             'Dias',
-            'Rua de Exemplo',
-            '71B',
-            'Meu Bairro',
-            'Minha Cidade',
-            'Meu estado',
-            'Brasil'
+            new Address('Rua de Exemplo', '71B', 'Meu Bairro', 'Minha Cidade', 'Meu estado', 'Brasil')
         );
     }
 

@@ -4,6 +4,7 @@ namespace App\Calisthenics\Domain\Student;
 
 use App\Calisthenics\Domain\Video\Video;
 use App\Calisthenics\Domain\Email\Email;
+use App\Calisthenics\Domain\Address\Address;
 use DateTimeInterface;
 use Ds\Map;
 
@@ -14,26 +15,16 @@ class Student
     private Map $watchedVideos;
     private string $fName;
     private string $lName;
-    public string $street;
-    public string $number;
-    public string $province;
-    public string $city;
-    public string $state;
-    public string $country;
+    private Address $address;
 
-    public function __construct(Email $email, DateTimeInterface $bd, string $fName, string $lName, string $street, string $number, string $province, string $city, string $state, string $country)
+    public function __construct(Email $email, DateTimeInterface $bd, string $fName, string $lName, Address $address)
     {
         $this->watchedVideos = new Map();
         $this->email = $email;
         $this->bd = $bd;
         $this->fName = $fName;
         $this->lName = $lName;
-        $this->street = $street;
-        $this->number = $number;
-        $this->province = $province;
-        $this->city = $city;
-        $this->state = $state;
-        $this->country = $country;
+        $this->address = $address;
     }
 
     public function getFullName(): string
