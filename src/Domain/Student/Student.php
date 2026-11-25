@@ -31,6 +31,13 @@ class Student
         return $this->bd;
     }
 
+    public function age(): int
+    {
+        $today = new \DateTimeImmutable();
+        $dateInterval = $this->bd->diff($today);
+        return $dateInterval->y;
+    }
+
     public function watch(Video $video, DateTimeInterface $date)
     {
         $this->watchedVideos->add($video, $date);
