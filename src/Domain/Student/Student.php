@@ -11,14 +11,14 @@ class Student
 {
     private WatchedVideos $watchedVideos;
 
-    public function __construct(private Email $email, private DateTimeInterface $bd, private string $fName, private string $lName, private Address $address)
+    public function __construct(private Email $email, private DateTimeInterface $birthDate, private string $firstName, private string $lastName, private Address $address)
     {
         $this->watchedVideos = new WatchedVideos();
     }
 
     public function getFullName(): string
     {
-        return "{$this->fName} {$this->lName}";
+        return "{$this->firstName} {$this->lastName}";
     }
 
     public function getEmail(): string
@@ -26,15 +26,15 @@ class Student
         return $this->email;
     }
 
-    public function getBd(): DateTimeInterface
+    public function getBirthDate(): DateTimeInterface
     {
-        return $this->bd;
+        return $this->birthDate;
     }
 
     public function age(): int
     {
         $today = new \DateTimeImmutable();
-        $dateInterval = $this->bd->diff($today);
+        $dateInterval = $this->birthDate->diff($today);
         return $dateInterval->y;
     }
 
