@@ -16,17 +16,17 @@ class Student
         $this->watchedVideos = new WatchedVideos();
     }
 
-    public function getFullName(): string
+    public function fullName(): string
     {
         return "{$this->firstName} {$this->lastName}";
     }
 
-    public function getEmail(): string
+    public function email(): string
     {
         return $this->email;
     }
 
-    public function getBirthDate(): DateTimeInterface
+    public function birthDate(): DateTimeInterface
     {
         return $this->birthDate;
     }
