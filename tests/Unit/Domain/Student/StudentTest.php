@@ -3,6 +3,7 @@
 namespace App\Calisthenics\Tests\Unit\Domain\Student;
 
 use App\Calisthenics\Domain\Student\Student;
+use App\Calisthenics\Domain\Student\FullName;
 use App\Calisthenics\Domain\Video\Video;
 use App\Calisthenics\Domain\Email\Email;
 use App\Calisthenics\Domain\Address\Address;
@@ -17,10 +18,14 @@ class StudentTest extends TestCase
         $this->student = new Student(
             new Email('email@example.com'),
             new \DateTimeImmutable('1997-10-15'),
-            'Vinicius',
-            'Dias',
+            new FullName('Vinicius', 'Dias'),
             new Address('Rua de Exemplo', '71B', 'Meu Bairro', 'Minha Cidade', 'Meu estado', 'Brasil')
         );
+    }
+
+    public function testFullNameMustBeReturnedAsString()
+    {
+        self::assertEquals('Vinicius Dias', (string) $this->student->fullName());
     }
 
     public function testStudentWithoutWatchedVideosHasAccess()

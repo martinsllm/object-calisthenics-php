@@ -11,14 +11,14 @@ class Student
 {
     private WatchedVideos $watchedVideos;
 
-    public function __construct(private Email $email, private DateTimeInterface $birthDate, private string $firstName, private string $lastName, private Address $address)
+    public function __construct(private Email $email, private DateTimeInterface $birthDate, private FullName $fullName, private Address $address)
     {
         $this->watchedVideos = new WatchedVideos();
     }
 
     public function fullName(): string
     {
-        return "{$this->firstName} {$this->lastName}";
+        return (string) $this->fullName;
     }
 
     public function email(): string
