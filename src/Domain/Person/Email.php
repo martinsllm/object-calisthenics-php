@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Calisthenics\Domain\Email;
+namespace App\Calisthenics\Domain\Person;
 
 class Email
 {

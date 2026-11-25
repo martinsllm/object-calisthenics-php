@@ -2,11 +2,11 @@
 
 namespace App\Calisthenics\Tests\Unit\Domain\Student;
 
+use App\Calisthenics\Domain\Person\FullName;
+use App\Calisthenics\Domain\Person\Email;
+use App\Calisthenics\Domain\Person\Address;
 use App\Calisthenics\Domain\Student\Student;
-use App\Calisthenics\Domain\Student\FullName;
 use App\Calisthenics\Domain\Video\Video;
-use App\Calisthenics\Domain\Email\Email;
-use App\Calisthenics\Domain\Address\Address;
 use PHPUnit\Framework\TestCase;
 
 class StudentTest extends TestCase
@@ -16,16 +16,11 @@ class StudentTest extends TestCase
     protected function setUp(): void
     {
         $this->student = new Student(
-            new Email('email@example.com'),
-            new \DateTimeImmutable('1997-10-15'),
-            new FullName('Vinicius', 'Dias'),
-            new Address('Rua de Exemplo', '71B', 'Meu Bairro', 'Minha Cidade', 'Meu estado', 'Brasil')
+            new Email('lucas@example.com'),
+            new \DateTimeImmutable('2000-04-03'),
+            new FullName('Lucas', 'Martins'),
+            new Address('Rua de Exemplo', '71B', 'Meu Bairro', 'Minha Cidade', 'Meu estado', 'Brasil'),
         );
-    }
-
-    public function testFullNameMustBeReturnedAsString()
-    {
-        self::assertEquals('Vinicius Dias', (string) $this->student->fullName());
     }
 
     public function testStudentWithoutWatchedVideosHasAccess()

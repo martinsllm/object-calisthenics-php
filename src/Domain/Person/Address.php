@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Calisthenics\Domain\Address;
+namespace App\Calisthenics\Domain\Person;
 
 class Address
 {

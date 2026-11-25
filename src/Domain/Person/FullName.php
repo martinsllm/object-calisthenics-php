@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Calisthenics\Domain\Student;
+namespace App\Calisthenics\Domain\Person;
 
 class FullName
 {

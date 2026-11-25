@@ -3,39 +3,20 @@
 namespace App\Calisthenics\Domain\Student;
 
 use App\Calisthenics\Domain\Video\Video;
-use App\Calisthenics\Domain\Email\Email;
-use App\Calisthenics\Domain\Address\Address;
+use App\Calisthenics\Domain\Person\Person;
+use App\Calisthenics\Domain\Person\Email;
+use App\Calisthenics\Domain\Person\FullName;
+use App\Calisthenics\Domain\Person\Address;
 use DateTimeInterface;
 
-class Student
+class Student extends Person
 {
     private WatchedVideos $watchedVideos;
-
-    public function __construct(private Email $email, private DateTimeInterface $birthDate, private FullName $fullName, private Address $address)
+    
+    public function __construct(Email $email, DateTimeInterface $birthDate, FullName $fullName, Address $address)
     {
+        parent::__construct($email, $birthDate, $fullName, $address);
         $this->watchedVideos = new WatchedVideos();
-    }
-
-    public function fullName(): string
-    {
-        return (string) $this->fullName;
-    }
-
-    public function email(): string
-    {
-        return $this->email;
-    }
-
-    public function birthDate(): DateTimeInterface
-    {
-        return $this->birthDate;
-    }
-
-    public function age(): int
-    {
-        $today = new \DateTimeImmutable();
-        $dateInterval = $this->birthDate->diff($today);
-        return $dateInterval->y;
     }
 
     public function watch(Video $video, DateTimeInterface $date)
